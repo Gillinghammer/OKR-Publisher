@@ -1,25 +1,50 @@
 import React from 'react';
-import TodoList from'./TodoList';
+import TodoList from './TodoList';
+import Firebase from 'firebase';
+// import Rebase from 're-base';
 
 class InputBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {items: [{id: 1, text: 'blah'}], text: ''};
+  // constructor(props) {
+  //   super(props);
+  //   // this.state = {items: [], text: ''};
+  //   this.onChange = this.onChange.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  //   console.log(this); // this logged to console
+  // }
+
+  componentWillMount() {
+    this.state = {items: [], text: ''};
     this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    console.log(this); // this logged to console
-  }
-  onChange(e) {
-    e.preventDefault();
-    var value = e.target.value;
+
+   this.firebaseRef = new Firebase("https://okr-database.firebaseio.com/items/");
+   this.firebaseRef.on("child_added", function(dataSnapshot) {
+    console.log('datasnap', dataSnapshot.val());
+     // this.items.push(dataSnapshot.val());
+     let dataSnap = this.state.items.concat({name: dataSnapshot.key(), text: dataSnapshot.val().text});
+     this.setState({
+       items: dataSnap
+     });
+   }.bind(this));
+ }
+
+ onChange(e) {
+  e.preventDefault();
+  var value = e.target.value;
     // console.log(e.target.value);
     this.setState({text: value});
   }
   handleSubmit(form_event) {
     form_event.preventDefault();
-    let newList = this.state.items.concat([{id: Date.now(), text: this.state.text}]);
+
+    this.firebaseRef.push({
+      text: this.state.text
+    });
+    this.setState({text: ""});
+
+    // let newList = this.state.items.concat([{id: Date.now(), text: this.state.text}]);  
     // console.log(newList);
-    this.setState({items: newList, text: '' })
+    // this.setState({items: newList, text: '' })
   }
 
   render() {
