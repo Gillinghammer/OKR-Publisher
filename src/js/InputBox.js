@@ -21,7 +21,7 @@ class InputBox extends React.Component {
    this.firebaseRef.on("child_added", function(dataSnapshot) {
     // console.log('datasnap', dataSnapshot.val());
      // this.items.push(dataSnapshot.val());
-     let dataSnap = this.state.items.concat({name: dataSnapshot.key(), text: dataSnapshot.val().text});
+     let dataSnap = this.state.items.concat({id: dataSnapshot.key(), objective: dataSnapshot.val().objective, level: dataSnapshot.val().level, timeframe: dataSnapshot.val().timeframe});
      this.setState({
        items: dataSnap
      });
@@ -36,9 +36,11 @@ class InputBox extends React.Component {
   }
   handleSubmit(form_event) {
     form_event.preventDefault();
-
+    // console.log(form_event.target.elements);
     this.firebaseRef.push({
-      text: this.state.text
+      objective: this.state.text,
+      level: form_event.target.elements.level.value,
+      timeframe: form_event.target.elements.timeframe.value
     });
     this.setState({text: ""});
 
@@ -50,12 +52,24 @@ class InputBox extends React.Component {
   render() {
     return (
       <div>
-      <h3>TODO</h3>
-      <TodoList items={this.state.items} />
-      <form onSubmit={this.handleSubmit}>
-      <input type="text" onChange={this.onChange} value={this.state.text} />
-      <button>{'Add'}</button>
-      </form>
+        <h3>TODO</h3>
+        <form onSubmit={this.handleSubmit}>
+          <select name="level" defaultValue="Sales">
+              <option value="Company">Company</option>
+              <option value="VisionMetrics">Vision & Metrics</option>
+              <option value="Development">Development</option>
+              <option value="Sales">Sales</option>
+          </select>
+          <select name="timeframe" defaultValue="Sales">
+              <option value="Q1">Q1</option>
+              <option value="Q2">Q2</option>
+              <option value="Q3">Q3</option>
+              <option value="Q4">Q4</option>
+          </select>
+          <input type="text" name="objective" onChange={this.onChange} value={this.state.text} />
+          <button>{'Add'}</button>
+        </form>
+        <TodoList items={this.state.items} />
       </div>
       );
   }

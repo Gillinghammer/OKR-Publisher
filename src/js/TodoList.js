@@ -7,7 +7,7 @@ class TodoList extends React.Component {
   }
   render() {
     let createItem = function(item) {
-      return <li key={item.name}>{item.text}</li>;
+      return (<li key={item.id}>{item.level} - {item.timeframe} - {item.objective} <button>{'Add Key Result'}</button> </li>);
     }
     return <ul>{this.props.items.map(createItem)}</ul>;
   }
