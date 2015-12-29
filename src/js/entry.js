@@ -5,6 +5,7 @@ import '../css/master.scss';
 import InputBox from './InputBox';
 import Nav from './Nav';
 import React from 'react';
+import ReactDOM from "react-dom";
 
 class Header extends React.Component {
   render() {
@@ -15,4 +16,5 @@ class Header extends React.Component {
 }
 
 // Render!
-React.render(<Header />, document.getElementsByTagName('body')[0]);
+ReactDOM.render(<InputBox />, document.getElementById('react'));
+
