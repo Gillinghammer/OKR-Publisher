@@ -3,7 +3,7 @@ import React from 'react';
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this); // this logged to console
+    // console.log(this);
   }
   render() {
     let createItem = function(item) {

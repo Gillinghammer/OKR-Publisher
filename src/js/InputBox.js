@@ -19,7 +19,7 @@ class InputBox extends React.Component {
 
    this.firebaseRef = new Firebase("https://okr-database.firebaseio.com/items/");
    this.firebaseRef.on("child_added", function(dataSnapshot) {
-    console.log('datasnap', dataSnapshot.val());
+    // console.log('datasnap', dataSnapshot.val());
      // this.items.push(dataSnapshot.val());
      let dataSnap = this.state.items.concat({name: dataSnapshot.key(), text: dataSnapshot.val().text});
      this.setState({
