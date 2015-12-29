@@ -4,6 +4,7 @@ import '../css/master.scss';
 // Import React and JS
 import InputBox from './InputBox';
 import React from 'react';
+import ReactDOM from "react-dom";
 
 // Render!
-React.render(<InputBox />, document.getElementsByTagName('body')[0]);
+ReactDOM.render(<InputBox />, document.getElementById('react'));
