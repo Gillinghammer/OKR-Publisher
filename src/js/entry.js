@@ -40,8 +40,10 @@ export default class Dashboard extends React.Component {
   }
   render() {
     return(
-      <div>
-        <InputBox addObj={this.addObjective} inputText={this.inputTextChange} inputTextVal={this.state.text} />
+      <div className="container">
+        <div className="page-header">
+          <InputBox addObj={this.addObjective} inputText={this.inputTextChange} inputTextVal={this.state.text} />
+        </div>
         <Objectives objectives={this.state.objectives} level="company" />
         <Objectives objectives={this.state.objectives} level="sales" />
         <Objectives objectives={this.state.objectives} level="development" />

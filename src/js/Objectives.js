@@ -27,16 +27,23 @@ class Objectives extends React.Component {
     let createObjective = (obj) => {
 
       if(obj.level.toLowerCase() === this.state.level) {
-        return (<li key={obj.key}>
-                <h4 className="objective-title">{obj.objective}  <button onClick={this.removeObjective} id={obj['key']}> x </button></h4>
-                <KeyResults obj={obj} />
-                <ResultInput objectiveId={obj.key} />
-                </li>)
+        return (<div>
+                  <div className="panel-body" key={obj.key}>
+                    <h4>{obj.objective} <button onClick={this.removeObjective} id={obj['key']} className="btn btn-danger" aria-hidden="true">delete</button></h4>
+                    <KeyResults obj={obj} />
+                  </div>
+                  <div className="panel-footer">
+                    <ResultInput objectiveId={obj.key} />
+                  </div>
+                </div>
+                )
       }
     }
-    return (<div className="objectivesCard">
-              <h2 className="objective-level">{this.props.level}</h2>
-              <ul>{this.props.objectives.map(createObjective)}</ul>
+    return (<div className="panel panel-default">
+              <div className="panel-heading">
+                <h2 className="panel-title">{this.props.level}</h2>
+              </div>
+                {this.props.objectives.map(createObjective)}
             </div>);
   }
 }

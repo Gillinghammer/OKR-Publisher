@@ -29,18 +29,16 @@ class KeyResults extends React.Component {
       if ('keyResults' in item) {
         var itemKeys = Object.keys( item['keyResults'] );
         let keyResultJSX = itemKeys.map(function(key){
-          return (<div>
+          return (<li>
                     <p>
-                      <span className="keyresult">{item['keyResults'][key]['resultText']} </span>
-                      <span className="score"> score: {item['keyResults'][key]['score']} </span>
-                      <button onClick={removeResult} id={key}> x </button>
+                      <h5>{item['keyResults'][key]['resultText']} <small>score: {item['keyResults'][key]['score']}</small> <span onClick={removeResult} id={key} className="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></h5>
                     </p>
-                  </div>)
+                  </li>)
         })
         return keyResultJSX
       }
     }
-    return (<div>{buildResults(this.props.obj,this.removeResult)}</div>)
+    return (<ol>{buildResults(this.props.obj,this.removeResult)}</ol>)
   }
 }
 

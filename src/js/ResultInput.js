@@ -16,10 +16,10 @@ class ResultInput extends React.Component {
    e.target.elements.score.value = ""
   }
   render() {
-    return (<form id={this.props.objectiveId} onSubmit={this.addResult}>
-                  <input type="text" name="keyresult" placeholder="Add Key Result"  />
-                  <input type="text" name="score" placeholder="0.0 - 1.0"  />
-                  <button type="submit"> + </button>
+    return (<form className="form-inline" id={this.props.objectiveId} onSubmit={this.addResult}>
+                  <input className="form-control" type="text" name="keyresult" placeholder="Add Key Result"  />
+                  <input className="form-control" type="text" name="score" placeholder="0.0 - 1.0"  />
+                  <button className="btn btn-primary" type="submit"> Add Key Result </button>
                 </form>)
   }
 }
