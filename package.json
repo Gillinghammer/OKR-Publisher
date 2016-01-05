@@ -8,7 +8,7 @@
     "webpack-server": "webpack-dev-server --hot --progress --colors",
     "web-server": "http-server -p 3000 .",
     "start": "npm run webpack-server & npm run web-server",
-    "build": "webpack -p --config webpack.config.production.js",
+    "build": "npm webpack -p --config webpack.config.production.js"
   },
   "keywords": [
     "demo"
