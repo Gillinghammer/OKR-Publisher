@@ -29,7 +29,6 @@ export default class Dashboard extends React.Component {
 
   addObjective = (form_event) => {
     form_event.preventDefault();
-    let resultsArray = [{text: "blah blah", score: 0.6}, {text: "yadda yadda", score: 0.1}]
     this.setState({
         objectives: this.state.objectives.concat({
         objective: this.state.text,
@@ -42,10 +41,12 @@ export default class Dashboard extends React.Component {
     return(
       <div className="container">
         <div className="page-header">
+          <h3 className="page-title">WIREWAX - Objectives and Key Results</h3>
           <InputBox addObj={this.addObjective} inputText={this.inputTextChange} inputTextVal={this.state.text} />
         </div>
         <Objectives objectives={this.state.objectives} level="company" />
         <Objectives objectives={this.state.objectives} level="sales" />
+        <Objectives objectives={this.state.objectives} level="design" />
         <Objectives objectives={this.state.objectives} level="development" />
         <Objectives objectives={this.state.objectives} level="visionmetrics" />
       </div>

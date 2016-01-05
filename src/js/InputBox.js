@@ -4,13 +4,14 @@ class InputBox extends React.Component {
   render() {
     return (
       <div>
-        <h3>WIREWAX Objectives</h3>
+        <h4>Add New Objective</h4>
         <form className="form-inline" onSubmit={this.props.addObj}>
           <select className="form-control" name="level" defaultValue="Sales">
               <option value="Company">Company</option>
               <option value="VisionMetrics">Vision & Metrics</option>
               <option value="Development">Development</option>
               <option value="Sales">Sales</option>
+              <option value="Design">Design</option>
           </select>
           <select className="form-control" name="timeframe" defaultValue="Sales">
               <option value="Q1">Q1</option>

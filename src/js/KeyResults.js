@@ -31,7 +31,7 @@ class KeyResults extends React.Component {
         let keyResultJSX = itemKeys.map(function(key){
           return (<li>
                     <p>
-                      <h5>{item['keyResults'][key]['resultText']} <small>score: {item['keyResults'][key]['score']}</small> <span onClick={removeResult} id={key} className="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></h5>
+                      <h5>{item['keyResults'][key]['resultText']} <small>score: {item['keyResults'][key]['score']}</small> <span onClick={removeResult} id={key} className="glyphicon glyphicon-remove-sign clickable" aria-hidden="true"></span></h5>
                     </p>
                   </li>)
         })

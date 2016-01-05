@@ -3,6 +3,8 @@
         <head>
             <meta charset="UTF-8">
             <title>OKR</title>
+
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
             <!-- Latest compiled and minified CSS -->
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -16,5 +18,21 @@
             <div id="react"></div>
             <script src="http://localhost:8080/build/bundle.js" charset="utf-8"></script>
             <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+            <script>
+                $(document).on('click', '.panel-heading span.clickable', function(e){
+                    var $this = $(this);
+                    if(!$this.hasClass('panel-collapsed')) {
+                        $this.parents('.panel').find('.panel-body').slideUp();
+                        $this.parents('.panel').find('.panel-footer').slideUp();
+                        $this.addClass('panel-collapsed');
+                        $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                    } else {
+                        $this.parents('.panel').find('.panel-body').slideDown();
+                        $this.parents('.panel').find('.panel-footer').slideDown();
+                        $this.removeClass('panel-collapsed');
+                        $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                    }
+                })
+            </script>
         </body>
     </html>

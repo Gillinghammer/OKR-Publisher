@@ -39,9 +39,10 @@ class Objectives extends React.Component {
                 )
       }
     }
-    return (<div className="panel panel-default">
+    return (<div className="panel panel-primary">
               <div className="panel-heading">
-                <h2 className="panel-title">{this.props.level}</h2>
+                <span className="panel-title">{this.props.level}</span>
+                <span className="pull-right clickable"><i className="glyphicon glyphicon-chevron-up"></i></span>
               </div>
                 {this.props.objectives.map(createObjective)}
             </div>);
