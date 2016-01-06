@@ -8,9 +8,7 @@
     "webpack-server": "webpack-dev-server --hot --progress --colors",
     "web-server": "http-server -p 3000 .",
     "start": "npm run webpack-server & npm run web-server",
-    "change-ref": "replace 'http://localhost:8080/build/' 'https://s3-eu-west-1.amazonaws.com/wirewax/OKR/' dist/index.html",
-    "copy": "copyfiles index.html dist",
-    "build": "webpack -p --config webpack.config.production.js & npm run copy & npm run change-ref"
+    "build": "node buildfile.js & webpack -p --config webpack.config.production.js"
   },
   "keywords": [
     "demo"
@@ -28,7 +26,6 @@
     "node-sass": "^3.2.0",
     "postcss-loader": "^0.5.1",
     "react-hot-loader": "^1.2.8",
-    "replace": "^0.3.0",
     "sass-loader": "^2.0.1",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.12.3",
