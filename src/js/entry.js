@@ -57,4 +57,3 @@ export default class Dashboard extends React.Component {
 
 // Render!
 ReactDOM.render(<Dashboard />, document.getElementById('react'));
-
